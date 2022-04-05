@@ -4,6 +4,7 @@ import org.bukkit.Bukkit;
 import org.bukkit.event.Event;
 
 import net.sourcewriters.minecraft.minigame.jumpleagueplus.common.api.IGameInfo;
+import net.sourcewriters.minecraft.minigame.jumpleagueplus.common.api.JumpGamePhase;
 
 public interface IJumpLeaguePlusSpigotApi {
 
@@ -16,6 +17,8 @@ public interface IJumpLeaguePlusSpigotApi {
     IParkourHandler getParkourHandler();
     
     IParkourManager getParkourManager();
+    
+    JumpGamePhase getGamePhase();
     
     IGameInfo getGameInfo();
     
