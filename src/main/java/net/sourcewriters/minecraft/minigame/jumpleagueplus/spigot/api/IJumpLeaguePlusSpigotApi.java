@@ -3,6 +3,8 @@ package net.sourcewriters.minecraft.minigame.jumpleagueplus.spigot.api;
 import org.bukkit.Bukkit;
 import org.bukkit.event.Event;
 
+import net.sourcewriters.minecraft.minigame.jumpleagueplus.common.api.IGameInfo;
+
 public interface IJumpLeaguePlusSpigotApi {
 
     IStatsHandler getStatsHandler();
@@ -14,6 +16,8 @@ public interface IJumpLeaguePlusSpigotApi {
     IParkourHandler getParkourHandler();
     
     IParkourManager getParkourManager();
+    
+    IGameInfo getGameInfo();
     
     void callEvent(Event event);
 
