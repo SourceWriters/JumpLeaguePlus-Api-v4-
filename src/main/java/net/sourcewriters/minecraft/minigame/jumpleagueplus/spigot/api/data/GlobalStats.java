@@ -14,6 +14,7 @@ public final class GlobalStats {
     private final long gamesPlayed;
     private final long gamesWon;
     private final long gamesLost;
+    private final long gamesAborted;
     private final double gamesWonLostRatio;
     private final long gamesParkourWon;
     private final long gamesParkourLost;
@@ -33,19 +34,21 @@ public final class GlobalStats {
 
     private final BigDecimal distanceReached;
     private final double averageDistanceReached;
+    
 
     public GlobalStats(UUID owner) {
-        this(owner, BigInteger.ZERO, 0, 0, 0, 0, 0, BigDecimal.ZERO, BigDecimal.ZERO, BigDecimal.ZERO, 0, 0, 0);
+        this(owner, BigInteger.ZERO, 0, 0, 0, 0, 0, 0, BigDecimal.ZERO, BigDecimal.ZERO, BigDecimal.ZERO, 0, 0, 0);
     }
 
-    public GlobalStats(UUID owner, BigInteger points, long gamesPlayed, long gamesWon, long gamesParkourWon, long kills, long deaths,
+    public GlobalStats(UUID owner, BigInteger points, long gamesPlayed, long gamesWon, long gamesAborted, long gamesParkourWon, long kills, long deaths,
         BigDecimal damageTaken, BigDecimal damageDealt, BigDecimal distanceReached, long checkpointsReached, long chestsLooted,
         long parkourFails) {
         this.owner = Objects.requireNonNull(owner);
         this.points = points;
         this.gamesPlayed = gamesPlayed;
         this.gamesWon = gamesWon;
-        this.gamesLost = gamesPlayed - gamesWon;
+        this.gamesAborted = gamesAborted;
+        this.gamesLost = gamesPlayed - gamesAborted - gamesWon;
         this.gamesWonLostRatio = gamesWon / Math.max(1D, gamesLost);
         this.gamesParkourWon = gamesParkourWon;
         this.gamesParkourLost = gamesPlayed - gamesParkourWon;
@@ -68,7 +71,7 @@ public final class GlobalStats {
             return null;
         }
         return new GlobalStats(owner, points.add(BigInteger.valueOf(round.getPoints())), gamesPlayed + 1,
-            gamesWon + round.hasWonDeathmatchAsInt(), gamesParkourWon + round.hasWonParkourAsInt(), kills + round.getKills(),
+            gamesWon + round.hasWonDeathmatchAsInt(), gamesAborted + round.isDisqualifiedAsInt(), gamesParkourWon + round.hasWonParkourAsInt(), kills + round.getKills(),
             deaths + round.getDeaths(), damageTaken.add(BigDecimal.valueOf(round.getDamageTaken())),
             damageDealt.add(BigDecimal.valueOf(round.getDamageDealt())),
             distanceReached.add(BigDecimal.valueOf(round.getDistanceReached())), checkpointsReached + round.getCheckpoints(),
@@ -97,6 +100,10 @@ public final class GlobalStats {
 
     public long getGamesLost() {
         return gamesLost;
+    }
+    
+    public long getGamesAborted() {
+        return gamesAborted;
     }
 
     public double getGamesWonLostRatio() {

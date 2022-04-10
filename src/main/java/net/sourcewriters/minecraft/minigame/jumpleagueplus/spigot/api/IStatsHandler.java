@@ -3,6 +3,8 @@ package net.sourcewriters.minecraft.minigame.jumpleagueplus.spigot.api;
 import java.util.UUID;
 import java.util.concurrent.CompletableFuture;
 
+import org.bukkit.entity.AnimalTamer;
+
 import net.sourcewriters.minecraft.minigame.jumpleagueplus.spigot.api.data.GlobalStats;
 import net.sourcewriters.minecraft.minigame.jumpleagueplus.spigot.api.data.RoundStats;
 
@@ -19,6 +21,10 @@ public interface IStatsHandler {
     void resetRound();
     
     UUID[] getRoundUsers();
+    
+    default RoundStats getRoundStats(AnimalTamer tamer) {
+        return getRoundStats(tamer.getUniqueId());
+    }
 
     RoundStats getRoundStats(UUID owner);
 
