@@ -1,5 +1,6 @@
 package net.sourcewriters.minecraft.minigame.jumpleagueplus.spigot.api.message;
 
+import java.net.InetAddress;
 import java.util.UUID;
 
 import net.sourcewriters.minecraft.minigame.jumpleagueplus.spigot.api.MessageHandler;
@@ -17,6 +18,11 @@ public final class SimpleMessageProvider implements IMessageProvider {
     @Override
     public String getId() {
         return id;
+    }
+
+    @Override
+    public IMessage getFor(InetAddress target) {
+        return messageHandler.getMessage(target, id);
     }
 
     @Override

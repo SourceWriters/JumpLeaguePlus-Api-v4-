@@ -1,6 +1,9 @@
 package net.sourcewriters.minecraft.minigame.jumpleagueplus.spigot.api;
 
+import java.net.InetAddress;
 import java.util.UUID;
+
+import net.sourcewriters.minecraft.minigame.jumpleagueplus.spigot.api.message.IMessage;
 
 public interface ILanguageHandler {
 
@@ -17,6 +20,10 @@ public interface ILanguageHandler {
     }
     
     String[] getLanguages();
+    
+    default String getLanguage(InetAddress address) {
+        return IMessage.DEFAULT_LANGUAGE;
+    }
 
     String getLanguage(UUID target);
 

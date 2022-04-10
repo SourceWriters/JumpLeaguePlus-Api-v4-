@@ -1,5 +1,6 @@
 package net.sourcewriters.minecraft.minigame.jumpleagueplus.spigot.api;
 
+import java.net.InetAddress;
 import java.util.List;
 import java.util.UUID;
 
@@ -95,11 +96,19 @@ public abstract class MessageHandler {
         return getMessage(target.getUniqueId(), id);
     }
 
+    public final IMessage getMessage(InetAddress target, String id) {
+        return getMessage(languageHandler.getLanguage(target), id);
+    }
+
     public final IMessage getMessage(UUID target, String id) {
         return getMessage(languageHandler.getLanguage(target), id);
     }
 
     public abstract IMessage getMessage(String language, String id);
+
+    public final IMessage getMessageExact(InetAddress target, String id) {
+        return getMessageExact(languageHandler.getLanguage(target), id);
+    }
 
     public final IMessage getMessageExact(AnimalTamer target, String id) {
         return getMessageExact(target.getUniqueId(), id);

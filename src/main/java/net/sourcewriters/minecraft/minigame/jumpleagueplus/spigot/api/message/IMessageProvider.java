@@ -1,5 +1,6 @@
 package net.sourcewriters.minecraft.minigame.jumpleagueplus.spigot.api.message;
 
+import java.net.InetAddress;
 import java.util.Collection;
 import java.util.UUID;
 
@@ -16,10 +17,16 @@ public interface IMessageProvider {
 
     IMessage getFor(UUID target);
 
+    IMessage getFor(InetAddress target);
+
     IMessage getFor(String language);
     
     default String getMessageFor(HumanEntity target, Keyed... placeholders) {
         return getMessageFor(target.getUniqueId(), placeholders);
+    }
+    
+    default String getMessageFor(InetAddress target, Keyed... placeholders) {
+        return getFor(target).asColoredMessageString(placeholders);
     }
     
     default String getMessageFor(UUID target, Keyed... placeholders) {
