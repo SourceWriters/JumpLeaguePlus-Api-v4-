@@ -13,5 +13,7 @@ public interface IChunk {
     ChunkTask task(IChunkPopulator populator);
 
     boolean isGenerated();
+    
+    boolean isLast();
 
 }

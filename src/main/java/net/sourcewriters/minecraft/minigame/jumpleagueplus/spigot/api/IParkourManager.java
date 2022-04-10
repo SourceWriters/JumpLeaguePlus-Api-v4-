@@ -23,6 +23,8 @@ public interface IParkourManager {
     
     Position[] getStartPositions();
     
+    int getLastZIndex();
+    
     int getGameModuleIdFor(ChunkPosition position);
     
     int getGameModuleAmount();

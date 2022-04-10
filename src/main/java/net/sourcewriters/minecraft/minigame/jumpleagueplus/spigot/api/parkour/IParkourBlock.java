@@ -25,6 +25,7 @@ public interface IParkourBlock {
 
         START,
         CHEST,
+        END,
         NONE;
 
         public void write(DataOutput output) throws IOException {
