@@ -20,21 +20,25 @@ public interface IMessageProvider {
     IMessage getFor(InetAddress target);
 
     IMessage getFor(String language);
-    
+
     default String getMessageFor(HumanEntity target, Keyed... placeholders) {
         return getMessageFor(target.getUniqueId(), placeholders);
     }
-    
+
     default String getMessageFor(InetAddress target, Keyed... placeholders) {
         return getFor(target).asColoredMessageString(placeholders);
     }
-    
+
     default String getMessageFor(UUID target, Keyed... placeholders) {
         return getFor(target).asColoredMessageString(placeholders);
     }
-    
+
     default String getMessageFor(String language, Keyed... placeholders) {
         return getFor(language).asColoredMessageString(placeholders);
+    }
+
+    default void sendConsole(Keyed... placeholders) {
+        send(Bukkit.getConsoleSender(), placeholders);
     }
 
     default void send(CommandSender sender, Keyed... placeholders) {

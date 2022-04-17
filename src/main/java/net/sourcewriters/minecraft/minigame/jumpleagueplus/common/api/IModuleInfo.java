@@ -5,8 +5,17 @@ import java.util.UUID;
 
 public interface IModuleInfo {
     
+    /**
+     * Gets the difficulty that the module is ranked as
+     * 
+     * @return the difficulty
+     */
     IDifficultyInfo getDifficulty();
     
+    /**
+     * Gets the 
+     * @return
+     */
     String getName();
     
     String getBiome();

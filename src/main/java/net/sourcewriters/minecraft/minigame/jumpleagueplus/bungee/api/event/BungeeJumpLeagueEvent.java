@@ -11,6 +11,11 @@ public abstract class BungeeJumpLeagueEvent extends Event {
         this.api = api;
     }
 
+    /**
+     * Gets the JumpLeaguePlus bungeecord api
+     * 
+     * @return the api
+     */
     public final IJumpLeaguePlusBungeeApi getApi() {
         return api;
     }

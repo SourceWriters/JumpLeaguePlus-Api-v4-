@@ -5,6 +5,11 @@ import net.sourcewriters.minecraft.minigame.jumpleagueplus.common.api.IGameInfo;
 
 public interface IBungeeGameInfo extends IGameInfo {
 
+    /**
+     * Gets the server info of the server that sent the game info
+     * 
+     * @return the server info
+     */
     ServerInfo getServer();
 
 }
