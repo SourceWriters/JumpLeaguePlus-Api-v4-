@@ -12,12 +12,11 @@ public interface ILootPoolBuilder {
      * @param  chance                   the chance-range that the item got to be
      *                                      chosen
      * @param  itemStack                the item
-     * @param  max                      the maximum amount of items
      * 
      * @return                          the loot pool builder itself
      * 
-     * @throws IllegalArgumentException If the maximum amount is lower or equal to
-     *                                      <code>0</code> or the maximum amount is
+     * @throws IllegalArgumentException If the ItemStack amount is lower or equal to
+     *                                      <code>0</code> or the amount is
      *                                      higher than the maximal stack size of
      *                                      the item
      */
