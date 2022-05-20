@@ -10,15 +10,15 @@ public interface ILootPoolBuilder {
      * This method creates a clone of the item and sets its amount to <code>1</code>
      * 
      * @param  chance                   the chance-range that the item got to be
-     *                                      chosen
+     *                                      chosen larger than 0
      * @param  itemStack                the item
      * 
      * @return                          the loot pool builder itself
      * 
      * @throws IllegalArgumentException If the ItemStack amount is lower or equal to
-     *                                      <code>0</code> or the amount is
-     *                                      higher than the maximal stack size of
-     *                                      the item
+     *                                      <code>0</code> or the amount is higher
+     *                                      than the maximal stack size of the item
+     *                                      or if the chance is lower or equal to 0
      */
     ILootPoolBuilder add(double chance, ItemStack itemStack);
 
@@ -28,7 +28,7 @@ public interface ILootPoolBuilder {
      * This method creates a clone of the item and sets its amount to <code>1</code>
      * 
      * @param  chance                   the chance-range that the item got to be
-     *                                      chosen
+     *                                      chosen larger than 0
      * @param  itemStack                the item
      * @param  max                      the maximum amount of items
      * 
@@ -37,7 +37,8 @@ public interface ILootPoolBuilder {
      * @throws IllegalArgumentException If the maximum amount is lower or equal to
      *                                      <code>0</code> or the maximum amount is
      *                                      higher than the maximal stack size of
-     *                                      the item
+     *                                      the item or if the chance is lower or
+     *                                      equal to 0
      */
     ILootPoolBuilder add(double chance, ItemStack itemStack, int amount) throws IllegalArgumentException;
 
@@ -47,7 +48,7 @@ public interface ILootPoolBuilder {
      * This method creates a clone of the item and sets its amount to <code>1</code>
      * 
      * @param  chance                   the chance-range that the item got to be
-     *                                      chosen
+     *                                      chosen larger than 0
      * @param  itemStack                the item
      * @param  min                      the minimum amount of items
      * @param  max                      the maximum amount of items
@@ -58,7 +59,8 @@ public interface ILootPoolBuilder {
      *                                      <code>0</code> or the maximum amount is
      *                                      higher than the maximal stack size of
      *                                      the item or if the maximum amount is
-     *                                      lower as the minimum amount
+     *                                      lower as the minimum amount or if the
+     *                                      chance is lower or equal to 0
      */
     ILootPoolBuilder add(double chance, ItemStack itemStack, int min, int max) throws IllegalArgumentException;
 

@@ -2,7 +2,6 @@ package net.sourcewriters.minecraft.minigame.jumpleagueplus.spigot.api.loot;
 
 import java.util.Objects;
 
-import net.sourcewriters.minecraft.minigame.jumpleagueplus.spigot.api.loot.random.IRandom;
 import net.sourcewriters.minecraft.minigame.jumpleagueplus.spigot.api.util.PluginKey;
 
 public abstract class LootTable {
@@ -17,6 +16,6 @@ public abstract class LootTable {
         return key;
     }
 
-    public abstract void fill(IContainer container, IRandom random);
+    public abstract void fill(IContainer container, LootRandom random);
 
 }

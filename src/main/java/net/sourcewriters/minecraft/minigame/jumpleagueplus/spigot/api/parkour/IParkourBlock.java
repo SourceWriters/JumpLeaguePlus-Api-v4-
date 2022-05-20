@@ -12,6 +12,8 @@ import net.sourcewriters.minecraft.minigame.jumpleagueplus.spigot.api.world.IWor
 
 public interface IParkourBlock {
 
+    boolean isFullySupported();
+    
     @NonNull
     BlockType getType();
 

@@ -42,9 +42,10 @@ public interface ILootTableBuilder {
     /**
      * Create a new loot pool for this table
      * 
-     * @param  chance number between 0 and 1 which determines how rare the pool is
+     * @param  chance                   number between 0 and 1 which determines how
+     *                                      rare the pool is
      * 
-     * @return        the builder for the new pool
+     * @return                          the builder for the new pool
      * 
      * @throws IllegalArgumentException If the chance is lower than or equal to 0 or
      *                                      higher than or equal to 1
@@ -58,8 +59,8 @@ public interface ILootTableBuilder {
      * 
      * @return                       if the loot table was registered or not
      * 
-     * @throws IllegalStateException If the minimum and maximum amount of items is
-     *                                   zero
+     * @throws IllegalStateException If the minimum and maximum amount of items is 0
+     *                                   or the dropChance is equal to 0
      */
     boolean register(PluginKey key) throws IllegalStateException;
 

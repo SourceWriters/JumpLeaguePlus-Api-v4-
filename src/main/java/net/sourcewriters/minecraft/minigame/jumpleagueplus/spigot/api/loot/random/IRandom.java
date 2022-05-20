@@ -9,6 +9,14 @@ public interface IRandom {
 
     double nextDouble();
 
+    default double nextDouble(double max) {
+        return nextDouble(0, max);
+    }
+
+    default double nextDouble(double min, double max) {
+        return (nextDouble() * (max - min)) + min;
+    }
+
     default int nextInt(int max) {
         return nextInt(0, max);
     }

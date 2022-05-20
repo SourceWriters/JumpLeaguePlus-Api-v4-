@@ -55,6 +55,14 @@ public final class LootRandom {
         return random.nextDouble();
     }
 
+    public double nextDouble(double max) {
+        return random.nextDouble(max);
+    }
+
+    public double nextDouble(double min, double max) {
+        return random.nextDouble(min, max);
+    }
+
     public int nextInt(int max) {
         return random.nextInt(max);
     }

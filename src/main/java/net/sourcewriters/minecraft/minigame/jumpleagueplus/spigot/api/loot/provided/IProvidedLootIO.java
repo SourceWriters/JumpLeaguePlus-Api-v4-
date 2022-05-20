@@ -25,7 +25,7 @@ public interface IProvidedLootIO {
      * @throws IOException              If there was an error while saving the loot
      *                                      table
      */
-    void saveToFile(File file, LootTable table) throws IllegalArgumentException, IOException;
+    void saveToFile(File file, LootTable table) throws IllegalStateException, IllegalArgumentException, IOException;
 
     /**
      * Loads a loot table from a file

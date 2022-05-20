@@ -31,6 +31,8 @@ public interface IParkourModule {
     int getBlockAmount();
 
     int getChestAmount();
+    
+    boolean isFullySupported();
 
     void paste(IChunk data, int worldHeightMin, int worldHeightMax, ChunkPosition offset);
 

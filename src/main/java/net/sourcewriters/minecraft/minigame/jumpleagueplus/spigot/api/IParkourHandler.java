@@ -6,6 +6,7 @@ import java.util.UUID;
 
 import org.bukkit.Location;
 
+import net.sourcewriters.minecraft.minigame.jumpleagueplus.spigot.api.exception.IncompatibleDataException;
 import net.sourcewriters.minecraft.minigame.jumpleagueplus.spigot.api.parkour.IParkourModule;
 import net.sourcewriters.minecraft.minigame.jumpleagueplus.spigot.api.parkour.IParkourStage;
 
@@ -19,7 +20,7 @@ public interface IParkourHandler {
     
     File getSource(IParkourModule module);
     
-    IParkourModule load(File file);
+    IParkourModule load(File file) throws IncompatibleDataException;
     
     boolean save(IParkourModule module);
     
