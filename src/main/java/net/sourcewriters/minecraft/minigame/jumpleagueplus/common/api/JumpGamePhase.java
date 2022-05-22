@@ -2,7 +2,7 @@ package net.sourcewriters.minecraft.minigame.jumpleagueplus.common.api;
 
 public enum JumpGamePhase {
 
-    BUILD,
+    SETUP,
     LOBBY,
     PRE_PARKOUR,
     PARKOUR,

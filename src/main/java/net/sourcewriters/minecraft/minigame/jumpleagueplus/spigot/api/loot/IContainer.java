@@ -8,6 +8,6 @@ public interface IContainer {
     
     int free();
     
-    boolean accept(ItemStack itemStack) throws IllegalArgumentException;
+    boolean accept(ItemStack itemStack);
 
 }

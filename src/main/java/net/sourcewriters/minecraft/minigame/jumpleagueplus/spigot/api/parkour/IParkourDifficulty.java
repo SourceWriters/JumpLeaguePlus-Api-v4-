@@ -9,6 +9,8 @@ public interface IParkourDifficulty {
     int getDifficultyScore();
 
     int getAwardedPoints();
+    
+    String getLootTable();
 
     String getName();
     

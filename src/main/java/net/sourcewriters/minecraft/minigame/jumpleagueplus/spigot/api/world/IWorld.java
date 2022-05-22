@@ -14,9 +14,12 @@ import org.bukkit.entity.EntityType;
 import org.bukkit.entity.LivingEntity;
 import org.bukkit.util.Consumer;
 
+import net.sourcewriters.minecraft.minigame.jumpleagueplus.spigot.api.IJumpLeaguePlusSpigotApi;
 import net.sourcewriters.minecraft.minigame.jumpleagueplus.spigot.api.data.ChunkPosition;
 
 public interface IWorld {
+    
+    IJumpLeaguePlusSpigotApi getApi();
 
     Object getGenerationSource();
     
