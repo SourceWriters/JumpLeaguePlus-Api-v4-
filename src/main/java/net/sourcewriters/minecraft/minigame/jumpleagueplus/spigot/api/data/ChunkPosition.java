@@ -1,5 +1,7 @@
 package net.sourcewriters.minecraft.minigame.jumpleagueplus.spigot.api.data;
 
+import org.bukkit.Location;
+
 public final class ChunkPosition {
 
     private final int x, z;
@@ -64,6 +66,10 @@ public final class ChunkPosition {
 
     public static int toChunk(int coordinate) {
         return coordinate >> 4;
+    }
+
+    public static ChunkPosition fromBlockLocation(Location location) {
+        return fromBlock(location.getBlockX(), location.getBlockZ());
     }
 
     public static ChunkPosition fromBlock(int x, int z) {

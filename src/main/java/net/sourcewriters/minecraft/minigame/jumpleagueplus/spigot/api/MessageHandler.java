@@ -21,6 +21,7 @@ public abstract class MessageHandler {
     public final void init(IJumpLeaguePlusSpigotApi api) {
         this.languageHandler = api.getLanguageHandler();
         this.api = api;
+        initInternal(api);
     }
 
     protected final ILanguageHandler getLanguageHandler() {

@@ -7,6 +7,7 @@ import java.util.UUID;
 
 import org.bukkit.Location;
 import org.bukkit.TreeType;
+import org.bukkit.World;
 import org.bukkit.block.Biome;
 import org.bukkit.block.BlockState;
 import org.bukkit.entity.Entity;
@@ -24,6 +25,8 @@ public interface IWorld {
     Object getGenerationSource();
     
     ChunkPosition getPosition();
+    
+    World asBukkit();
     
     String getName();
 
