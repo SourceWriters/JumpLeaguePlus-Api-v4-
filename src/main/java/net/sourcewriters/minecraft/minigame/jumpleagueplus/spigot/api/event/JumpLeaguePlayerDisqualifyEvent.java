@@ -60,7 +60,9 @@ public class JumpLeaguePlayerDisqualifyEvent extends JumpLeagueEvent {
     public static enum Reason {
 
         LEFT,
-        NO_REJOIN;
+        NO_REJOIN,
+        LATE_REJOIN,
+        FAILED_REJOIN;
 
     }
 
