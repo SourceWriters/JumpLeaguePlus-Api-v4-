@@ -16,6 +16,7 @@ public final class GlobalStats {
     private final long gamesLost;
     private final long gamesAborted;
     private final double gamesWonLostRatio;
+    private final long gamesParkourEndReached;
     private final long gamesParkourWon;
     private final long gamesParkourLost;
     private final double gamesParkourWonLostRatio;
@@ -27,22 +28,19 @@ public final class GlobalStats {
     private final BigDecimal damageTaken;
     private final BigDecimal damageDealt;
     private final double damageTakenDealthRatio;
-
-    private final long checkpointsReached;
     private final long chestsLooted;
     private final long parkourFails;
 
-    private final BigDecimal distanceReached;
-    private final double averageDistanceReached;
-    
+    private final long checkpointsReached;
+    private final double averageCheckpointsReached;
 
     public GlobalStats(UUID owner) {
-        this(owner, BigInteger.ZERO, 0, 0, 0, 0, 0, 0, BigDecimal.ZERO, BigDecimal.ZERO, BigDecimal.ZERO, 0, 0, 0);
+        this(owner, BigInteger.ZERO, 0, 0, 0, 0, 0, 0, 0, BigDecimal.ZERO, BigDecimal.ZERO, 0, 0, 0);
     }
 
-    public GlobalStats(UUID owner, BigInteger points, long gamesPlayed, long gamesWon, long gamesAborted, long gamesParkourWon, long kills, long deaths,
-        BigDecimal damageTaken, BigDecimal damageDealt, BigDecimal distanceReached, long checkpointsReached, long chestsLooted,
-        long parkourFails) {
+    public GlobalStats(UUID owner, BigInteger points, long gamesPlayed, long gamesWon, long gamesAborted, long gamesParkourEndReached,
+        long gamesParkourWon, long kills, long deaths, BigDecimal damageTaken, BigDecimal damageDealt, long checkpointsReached,
+        long chestsLooted, long parkourFails) {
         this.owner = Objects.requireNonNull(owner);
         this.points = points;
         this.gamesPlayed = gamesPlayed;
@@ -50,6 +48,7 @@ public final class GlobalStats {
         this.gamesAborted = gamesAborted;
         this.gamesLost = gamesPlayed - gamesAborted - gamesWon;
         this.gamesWonLostRatio = gamesWon / Math.max(1D, gamesLost);
+        this.gamesParkourEndReached = gamesParkourEndReached;
         this.gamesParkourWon = gamesParkourWon;
         this.gamesParkourLost = gamesPlayed - gamesParkourWon;
         this.gamesParkourWonLostRatio = gamesParkourWon / Math.max(1D, gamesParkourLost);
@@ -59,9 +58,8 @@ public final class GlobalStats {
         this.damageTaken = damageTaken;
         this.damageDealt = damageDealt;
         this.damageTakenDealthRatio = damageDealt.compareTo(BigDecimal.ZERO) <= 0 ? 0 : damageTaken.divide(damageDealt).doubleValue();
-        this.distanceReached = distanceReached;
-        this.averageDistanceReached = gamesPlayed == 0 ? 0 : distanceReached.divide(BigDecimal.valueOf(gamesPlayed)).doubleValue();
         this.checkpointsReached = checkpointsReached;
+        this.averageCheckpointsReached = gamesPlayed == 0 ? 0 : checkpointsReached / (double) gamesPlayed;
         this.chestsLooted = chestsLooted;
         this.parkourFails = parkourFails;
     }
@@ -71,10 +69,10 @@ public final class GlobalStats {
             return null;
         }
         return new GlobalStats(owner, points.add(BigInteger.valueOf(round.getPoints())), gamesPlayed + 1,
-            gamesWon + round.hasWonDeathmatchAsInt(), gamesAborted + round.isDisqualifiedAsInt(), gamesParkourWon + round.hasWonParkourAsInt(), kills + round.getKills(),
-            deaths + round.getDeaths(), damageTaken.add(BigDecimal.valueOf(round.getDamageTaken())),
-            damageDealt.add(BigDecimal.valueOf(round.getDamageDealt())),
-            distanceReached.add(BigDecimal.valueOf(round.getDistanceReached())), checkpointsReached + round.getCheckpoints(),
+            gamesWon + round.hasWonDeathmatchAsInt(), gamesAborted + round.isDisqualifiedAsInt(),
+            gamesParkourEndReached + round.hasReachedParkourEndAsInt(), gamesParkourWon + round.hasWonParkourAsInt(),
+            kills + round.getKills(), deaths + round.getDeaths(), damageTaken.add(BigDecimal.valueOf(round.getDamageTaken())),
+            damageDealt.add(BigDecimal.valueOf(round.getDamageDealt())), checkpointsReached + round.getCheckpoints(),
             chestsLooted + round.getChests(), parkourFails + round.getFails());
     }
 
@@ -101,13 +99,17 @@ public final class GlobalStats {
     public long getGamesLost() {
         return gamesLost;
     }
-    
+
     public long getGamesAborted() {
         return gamesAborted;
     }
 
     public double getGamesWonLostRatio() {
         return gamesWonLostRatio;
+    }
+    
+    public long getGamesParkourEndReached() {
+        return gamesParkourEndReached;
     }
 
     public long getGamesParkourWon() {
@@ -150,20 +152,16 @@ public final class GlobalStats {
         return checkpointsReached;
     }
 
+    public double getAverageCheckpointsReached() {
+        return averageCheckpointsReached;
+    }
+
     public long getChestsLooted() {
         return chestsLooted;
     }
 
     public long getParkourFails() {
         return parkourFails;
-    }
-
-    public BigDecimal getDistanceReached() {
-        return distanceReached;
-    }
-
-    public double getAverageDistanceReached() {
-        return averageDistanceReached;
     }
 
 }

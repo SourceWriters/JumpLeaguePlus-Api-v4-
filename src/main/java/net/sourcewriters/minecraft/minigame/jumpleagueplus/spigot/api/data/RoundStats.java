@@ -18,8 +18,8 @@ public final class RoundStats {
     private int fails;
     private int chests;
     private int checkpoints;
-    private double distanceReached;
     private boolean wonParkour;
+    private boolean reachedParkourEnd;
 
     private boolean disqualified;
 
@@ -110,14 +110,6 @@ public final class RoundStats {
         return checkpoints;
     }
 
-    public void setDistanceReached(double distanceReached) {
-        this.distanceReached = distanceReached;
-    }
-
-    public double getDistanceReached() {
-        return distanceReached;
-    }
-
     public void setDisqualified(boolean disqualified) {
         this.disqualified = disqualified;
     }
@@ -128,6 +120,21 @@ public final class RoundStats {
     
     public int isDisqualifiedAsInt() {
         if (disqualified) {
+            return 1;
+        }
+        return 0;
+    }
+    
+    public void setReachedParkourEnd(boolean reachedParkourEnd) {
+        this.reachedParkourEnd = reachedParkourEnd;
+    }
+    
+    public boolean hasReachedParkourEnd() {
+        return reachedParkourEnd;
+    }
+
+    public int hasReachedParkourEndAsInt() {
+        if (reachedParkourEnd) {
             return 1;
         }
         return 0;

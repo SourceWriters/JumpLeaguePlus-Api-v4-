@@ -20,6 +20,8 @@ public interface IStatsHandler {
     
     void resetRound();
     
+    void removeRoundUser(UUID user);
+    
     UUID[] getRoundUsers();
     
     default RoundStats getRoundStats(AnimalTamer tamer) {
