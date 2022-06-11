@@ -6,14 +6,15 @@ import org.bukkit.event.HandlerList;
 import net.sourcewriters.minecraft.minigame.jumpleagueplus.spigot.api.MessageHandler;
 import net.sourcewriters.minecraft.minigame.jumpleagueplus.spigot.api.message.IMessage;
 
-public final class JumpLeagueMessageRegisterEvent extends Event {
+public final class AsyncJumpLeagueMessageRegisterEvent extends Event {
 
     private static final HandlerList HANDLERS = new HandlerList();
 
     private final MessageHandler messageHandler;
     private final IMessage message;
 
-    public JumpLeagueMessageRegisterEvent(MessageHandler messageHandler, IMessage message) {
+    public AsyncJumpLeagueMessageRegisterEvent(MessageHandler messageHandler, IMessage message) {
+        super(true);
         this.messageHandler = messageHandler;
         this.message = message;
     }

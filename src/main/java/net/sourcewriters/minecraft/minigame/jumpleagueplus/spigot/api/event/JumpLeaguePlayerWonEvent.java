@@ -12,7 +12,7 @@ public class JumpLeaguePlayerWonEvent extends JumpLeaguePlayerStatsEvent {
     private static final HandlerList HANDLERS = new HandlerList();
 
     public JumpLeaguePlayerWonEvent(@NonNull IJumpLeaguePlusSpigotApi api, @NonNull Player player, @NonNull RoundStats stats) {
-        super(api, player, stats);
+        super(api, player, stats, false);
     }
 
     @Override

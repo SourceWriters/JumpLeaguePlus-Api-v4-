@@ -22,7 +22,7 @@ public class JumpLeagueParkourChoosenEvent extends JumpLeagueEvent {
 
     public JumpLeagueParkourChoosenEvent(@NonNull IJumpLeaguePlusSpigotApi api, @NonNull int minimumModuleAmount,
         @NonNull int maximumModuleAmount, @NonNull Set<IParkourModule> modules) {
-        super(api);
+        super(api, false);
         this.minimumModuleAmount = Objects.requireNonNull(minimumModuleAmount);
         this.maximumModuleAmount = Objects.requireNonNull(maximumModuleAmount);
         this.modules = Objects.requireNonNull(modules);

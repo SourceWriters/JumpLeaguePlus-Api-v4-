@@ -13,7 +13,7 @@ public class JumpLeaguePlayerParkourFailEvent extends JumpLeaguePlayerParkourEve
 
     public JumpLeaguePlayerParkourFailEvent(@NonNull IJumpLeaguePlusSpigotApi api, @NonNull Player player, @NonNull IParkourModule module,
         @NonNull int moduleId) {
-        super(api, player, module, moduleId);
+        super(api, player, module, moduleId, false);
     }
 
     @Override

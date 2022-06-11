@@ -6,7 +6,7 @@ import java.util.UUID;
 
 import org.bukkit.entity.AnimalTamer;
 
-import net.sourcewriters.minecraft.minigame.jumpleagueplus.spigot.api.event.JumpLeagueMessageRegisterEvent;
+import net.sourcewriters.minecraft.minigame.jumpleagueplus.spigot.api.event.AsyncJumpLeagueMessageRegisterEvent;
 import net.sourcewriters.minecraft.minigame.jumpleagueplus.spigot.api.message.IMessage;
 import net.sourcewriters.minecraft.minigame.jumpleagueplus.spigot.api.message.IMessageProvider;
 import net.sourcewriters.minecraft.minigame.jumpleagueplus.spigot.api.message.Keyed;
@@ -85,7 +85,7 @@ public abstract class MessageHandler {
 
     public final IMessage registerMessage(String language, String id, String fallback) throws IllegalArgumentException {
         IMessage message = registerMessageInternal(language, id, fallback);
-        api.callEvent(new JumpLeagueMessageRegisterEvent(this, message));
+        api.callEvent(new AsyncJumpLeagueMessageRegisterEvent(this, message));
         return message;
     }
 

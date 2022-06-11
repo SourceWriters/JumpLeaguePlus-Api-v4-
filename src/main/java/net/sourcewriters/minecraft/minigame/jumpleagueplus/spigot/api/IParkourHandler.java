@@ -24,6 +24,12 @@ public interface IParkourHandler {
     
     boolean save(IParkourModule module);
     
-    IParkourStage createStage(UUID creator, Location location, int initialWidth, int initialHeight);
+    IParkourStage getStage(Location location);
+    
+    IParkourStage getStage(String name);
+    
+    boolean deleteStage(String name);
+    
+    IParkourStage createStage(String name, UUID creator, Location location, int initialWidth, int initialHeight);
 
 }

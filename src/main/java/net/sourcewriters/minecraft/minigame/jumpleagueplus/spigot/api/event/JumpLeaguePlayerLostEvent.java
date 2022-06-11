@@ -16,7 +16,7 @@ public class JumpLeaguePlayerLostEvent extends JumpLeaguePlayerStatsEvent {
     private final Player killer;
 
     public JumpLeaguePlayerLostEvent(@NonNull IJumpLeaguePlusSpigotApi api, @NonNull Player player, @NonNull Player killer, @NonNull RoundStats stats) {
-        super(api, player, stats);
+        super(api, player, stats, false);
         this.killer = Objects.requireNonNull(killer);
     }
 

@@ -48,6 +48,18 @@ public final class ChunkPosition {
         return new ChunkPosition(x - value.x, z - value.z);
     }
 
+    public ChunkPosition subtract(int x, int z) {
+        return new ChunkPosition(this.x - x, this.z - z);
+    }
+
+    public ChunkPosition add(ChunkPosition value) {
+        return new ChunkPosition(x + value.x, z + value.z);
+    }
+
+    public ChunkPosition add(int x, int z) {
+        return new ChunkPosition(this.x + x, this.z + z);
+    }
+
     public Position add(Position value) {
         return Position.of(getBlockX() + value.getX(), value.getY(), getBlockZ() + value.getZ());
     }

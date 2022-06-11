@@ -1,5 +1,7 @@
 package net.sourcewriters.minecraft.minigame.jumpleagueplus.spigot.api;
 
+import java.util.concurrent.CompletableFuture;
+
 import org.bukkit.Bukkit;
 import org.bukkit.event.Event;
 
@@ -26,7 +28,7 @@ public interface IJumpLeaguePlusSpigotApi {
 
     IGameInfo getGameInfo();
 
-    void callEvent(Event event);
+    CompletableFuture<Void> callEvent(Event event);
 
     ISeededRandom newRandom(RandomType type);
 

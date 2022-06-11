@@ -3,23 +3,23 @@ package net.sourcewriters.minecraft.minigame.jumpleagueplus.spigot.api.event;
 import org.bukkit.event.HandlerList;
 import org.checkerframework.checker.nullness.qual.NonNull;
 
-import net.sourcewriters.minecraft.minigame.jumpleagueplus.common.api.JumpGamePhase;
 import net.sourcewriters.minecraft.minigame.jumpleagueplus.spigot.api.IJumpLeaguePlusSpigotApi;
+import net.sourcewriters.minecraft.minigame.jumpleagueplus.spigot.api.parkour.IParkourStage;
 
-public class JumpLeagueGamePhaseEvent extends JumpLeagueEvent {
+public abstract class AsyncJumpLeagueStageEvent extends JumpLeagueEvent {
 
     private static final HandlerList HANDLERS = new HandlerList();
 
-    private final JumpGamePhase phase;
+    private final IParkourStage stage;
 
-    public JumpLeagueGamePhaseEvent(@NonNull IJumpLeaguePlusSpigotApi api, @NonNull JumpGamePhase phase) {
-        super(api);
-        this.phase = phase;
+    public AsyncJumpLeagueStageEvent(@NonNull IJumpLeaguePlusSpigotApi api, @NonNull IParkourStage stage) {
+        super(api, true);
+        this.stage = stage;
     }
 
     @NonNull
-    public final JumpGamePhase getGamePhase() {
-        return phase;
+    public final IParkourStage getStage() {
+        return stage;
     }
 
     @Override

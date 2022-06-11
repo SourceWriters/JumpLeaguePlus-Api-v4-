@@ -15,8 +15,8 @@ public abstract class JumpLeaguePlayerStatsEvent extends JumpLeaguePlayerEvent {
 
     private final RoundStats stats;
 
-    public JumpLeaguePlayerStatsEvent(@NonNull IJumpLeaguePlusSpigotApi api, @NonNull Player player, @NonNull RoundStats stats) {
-        super(api, player);
+    public JumpLeaguePlayerStatsEvent(@NonNull IJumpLeaguePlusSpigotApi api, @NonNull Player player, @NonNull RoundStats stats, boolean async) {
+        super(api, player, async);
         this.stats = Objects.requireNonNull(stats);
     }
 

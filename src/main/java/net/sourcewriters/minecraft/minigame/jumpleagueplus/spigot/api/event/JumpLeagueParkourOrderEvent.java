@@ -15,7 +15,7 @@ public class JumpLeagueParkourOrderEvent extends JumpLeagueEvent {
     private final IParkourDifficultyCollection modules;
 
     public JumpLeagueParkourOrderEvent(@NonNull IJumpLeaguePlusSpigotApi api, @NonNull IParkourDifficultyCollection modules) {
-        super(api);
+        super(api, false);
         this.modules = Objects.requireNonNull(modules);
     }
 

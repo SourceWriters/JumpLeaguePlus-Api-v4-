@@ -21,6 +21,13 @@ public interface IMessageProvider {
 
     IMessage getFor(String language);
 
+    default String getMessageFor(CommandSender target, Keyed... placeholders) {
+        if (target instanceof HumanEntity) {
+            return getMessageFor((HumanEntity) target, placeholders);
+        }
+        return getMessageFor(IMessage.DEFAULT_LANGUAGE, placeholders);
+    }
+
     default String getMessageFor(HumanEntity target, Keyed... placeholders) {
         return getMessageFor(target.getUniqueId(), placeholders);
     }
@@ -42,6 +49,10 @@ public interface IMessageProvider {
     }
 
     default void send(CommandSender sender, Keyed... placeholders) {
+        if (sender instanceof HumanEntity) {
+            send((HumanEntity) sender, placeholders);
+            return;
+        }
         getFor(IMessage.DEFAULT_LANGUAGE).send(sender, placeholders);
     }
 

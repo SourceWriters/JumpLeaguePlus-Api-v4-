@@ -1,26 +1,17 @@
 package net.sourcewriters.minecraft.minigame.jumpleagueplus.spigot.api.event;
 
-import org.bukkit.entity.Player;
 import org.checkerframework.checker.nullness.qual.NonNull;
 
 import net.sourcewriters.minecraft.minigame.jumpleagueplus.spigot.api.IJumpLeaguePlusSpigotApi;
 import net.sourcewriters.minecraft.minigame.jumpleagueplus.spigot.api.parkour.IParkourStage;
 
-public class JumpLeagueStageExpandEvent extends JumpLeagueStageEvent {
-
-    private final Player player;
+public class AsyncJumpLeagueStageSizeChangeEvent extends AsyncJumpLeagueStageEvent {
 
     private int newWidth;
     private int newLength;
 
-    public JumpLeagueStageExpandEvent(@NonNull IJumpLeaguePlusSpigotApi api, @NonNull IParkourStage stage, @NonNull Player player) {
+    public AsyncJumpLeagueStageSizeChangeEvent(@NonNull IJumpLeaguePlusSpigotApi api, @NonNull IParkourStage stage) {
         super(api, stage);
-        this.player = player;
-    }
-
-    @NonNull
-    public final Player getPlayer() {
-        return player;
     }
 
     public final int getNewLength() {

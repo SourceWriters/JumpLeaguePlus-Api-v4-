@@ -16,8 +16,8 @@ public abstract class JumpLeaguePlayerParkourEvent extends JumpLeaguePlayerEvent
     private final IParkourModule module;
     private final int moduleId;
 
-    public JumpLeaguePlayerParkourEvent(@NonNull IJumpLeaguePlusSpigotApi api, @NonNull Player player, @NonNull IParkourModule module, @NonNull int moduleId) {
-        super(api, player);
+    public JumpLeaguePlayerParkourEvent(@NonNull IJumpLeaguePlusSpigotApi api, @NonNull Player player, @NonNull IParkourModule module, @NonNull int moduleId, boolean async) {
+        super(api, player, async);
         this.module = Objects.requireNonNull(module);
         this.moduleId = Objects.requireNonNull(moduleId);
     }

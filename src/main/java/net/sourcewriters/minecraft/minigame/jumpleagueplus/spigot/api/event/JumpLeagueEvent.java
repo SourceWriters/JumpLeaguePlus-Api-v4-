@@ -14,7 +14,8 @@ public abstract class JumpLeagueEvent extends Event {
 
     private final IJumpLeaguePlusSpigotApi api;
 
-    public JumpLeagueEvent(@NonNull IJumpLeaguePlusSpigotApi api) {
+    public JumpLeagueEvent(@NonNull IJumpLeaguePlusSpigotApi api, boolean async) {
+        super(async);
         this.api = Objects.requireNonNull(api);
     }
 

@@ -12,7 +12,7 @@ import org.checkerframework.checker.nullness.qual.NonNull;
 import net.sourcewriters.minecraft.minigame.jumpleagueplus.spigot.api.IJumpLeaguePlusSpigotApi;
 import net.sourcewriters.minecraft.minigame.jumpleagueplus.spigot.api.data.RoundStats;
 
-public class JumpLeaguePlayerDisqualifyEvent extends JumpLeagueEvent {
+public class AsyncJumpLeaguePlayerDisqualifyEvent extends JumpLeagueEvent {
 
     private static final HandlerList HANDLERS = new HandlerList();
 
@@ -20,9 +20,9 @@ public class JumpLeaguePlayerDisqualifyEvent extends JumpLeagueEvent {
     private final UUID uniqueId;
     private final Reason reason;
 
-    public JumpLeaguePlayerDisqualifyEvent(@NonNull IJumpLeaguePlusSpigotApi api, @NonNull UUID unqiueId, @NonNull RoundStats stats,
+    public AsyncJumpLeaguePlayerDisqualifyEvent(@NonNull IJumpLeaguePlusSpigotApi api, @NonNull UUID unqiueId, @NonNull RoundStats stats,
         @NonNull Reason reason) {
-        super(api);
+        super(api, true);
         this.uniqueId = unqiueId;
         this.stats = stats;
         this.reason = reason;

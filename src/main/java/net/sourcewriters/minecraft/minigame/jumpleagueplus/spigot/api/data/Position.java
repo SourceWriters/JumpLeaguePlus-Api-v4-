@@ -50,6 +50,22 @@ public final class Position {
         return (int) Math.floor(z);
     }
 
+    public Position add(Position value) {
+        return new Position(this.x + value.x, this.y + value.y, this.z + value.z);
+    }
+
+    public Position add(double x, double y, double z) {
+        return new Position(this.x + x, this.y + y, this.z + z);
+    }
+
+    public Position subtract(Position value) {
+        return new Position(this.x - value.x, this.y - value.y, this.z - value.z);
+    }
+
+    public Position subtract(double x, double y, double z) {
+        return new Position(this.x - x, this.y - y, this.z - z);
+    }
+
     public long pack() {
         return merge20BitUnsigned((long) getNormalizedX()) << 44 | merge20BitUnsigned((long) getNormalizedZ()) << 24
             | merge24BitSigned((long) getNormalizedY());
@@ -147,6 +163,10 @@ public final class Position {
 
     public static Position of(double x, double y, double z) {
         return new Position(x, y, z);
+    }
+
+    public static Position ofLocation(Location location) {
+        return new Position(location.getX(), location.getY(), location.getZ());
     }
 
     public static Position read(DataInput input) throws IOException {

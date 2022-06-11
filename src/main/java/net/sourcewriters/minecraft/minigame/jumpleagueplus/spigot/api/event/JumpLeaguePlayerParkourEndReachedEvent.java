@@ -12,7 +12,7 @@ public class JumpLeaguePlayerParkourEndReachedEvent extends JumpLeaguePlayerPark
     private static final HandlerList HANDLERS = new HandlerList();
 
     public JumpLeaguePlayerParkourEndReachedEvent(@NonNull IJumpLeaguePlusSpigotApi api, @NonNull Player player, @NonNull IParkourModule module, @NonNull int moduleId) {
-        super(api, player, module, moduleId);
+        super(api, player, module, moduleId, false);
     }
 
     @Override
