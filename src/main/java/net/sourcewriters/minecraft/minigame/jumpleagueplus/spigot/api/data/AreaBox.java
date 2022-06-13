@@ -23,7 +23,7 @@ public final class AreaBox {
     public AreaBox(final ChunkPosition origin, final int width, final int length, final int minY, final int maxY) {
         int halfWidth = width >> 2;
         this.bottomLeft = origin.subtract(halfWidth, 0).asPosition(minY);
-        this.topRight = origin.add(halfWidth + (width & 0b1), 0).asPosition(maxY).add(15, 0, 15);
+        this.topRight = origin.add(halfWidth + (width & 0b1), length).asPosition(maxY).add(15, 0, 15);
     }
 
     public Position getBottomLeft() {
