@@ -31,6 +31,8 @@ public interface IJumpLeaguePlusSpigotApi {
     CompletableFuture<Void> callEvent(Event event);
 
     ISeededRandom newRandom(RandomType type);
+    
+    boolean isDebug();
 
     static IJumpLeaguePlusSpigotApi getApi() {
         return Bukkit.getServicesManager().getRegistration(IJumpLeaguePlusSpigotApi.class).getProvider();
