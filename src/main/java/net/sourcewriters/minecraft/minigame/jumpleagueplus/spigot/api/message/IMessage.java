@@ -18,7 +18,7 @@ public interface IMessage {
     IMessage translation(String translation);
 
     String asMessageString(Keyed... placeholders);
-    
+
     default Placeholder[] getPlaceholders() {
         return Placeholder.parse(asString());
     }
@@ -44,7 +44,12 @@ public interface IMessage {
     }
 
     default void send(CommandSender sender, Keyed... placeholders) {
-        sender.sendMessage(asColoredMessageString(placeholders));
+        String message = asColoredMessageString(placeholders);
+        if (message.contains("\n")) {
+            sender.sendMessage(message.split("\n"));
+            return;
+        }
+        sender.sendMessage(message);
     }
 
     default void broadcast(Keyed... placeholders) {

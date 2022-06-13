@@ -16,14 +16,13 @@ public final class AreaBox {
 
     public AreaBox(final Position origin, final double width, final double length, final double height) {
         double halfWidth = width / 2;
-        this.bottomLeft = origin.subtract(width, 0, 0);
-        this.topRight = origin.add(halfWidth, length, height);
+        this.bottomLeft = origin.subtract(0, halfWidth, 0);
+        this.topRight = origin.add(length, halfWidth, height);
     }
 
     public AreaBox(final ChunkPosition origin, final int width, final int length, final int minY, final int maxY) {
-        int halfWidth = width >> 2;
-        this.bottomLeft = origin.subtract(halfWidth, 0).asPosition(minY);
-        this.topRight = origin.add(halfWidth + (width & 0b1), length).asPosition(maxY).add(15, 0, 15);
+        this.bottomLeft = origin.subtract(0, width - 1).asPosition(minY);
+        this.topRight = origin.add((length * 2) - 1, width).asPosition(maxY).add(15, 0, 15);
     }
 
     public Position getBottomLeft() {
