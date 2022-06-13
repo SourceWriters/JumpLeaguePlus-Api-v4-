@@ -22,6 +22,8 @@ public interface IParkourStage {
 
     boolean isContributor(UUID uniqueId);
 
+    Collection<UUID> getBanned();
+
     void setBanned(UUID uniqueId, boolean banned);
 
     boolean isBanned(UUID uniqueId);

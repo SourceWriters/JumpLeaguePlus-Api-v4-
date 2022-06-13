@@ -13,6 +13,10 @@ import net.sourcewriters.minecraft.minigame.jumpleagueplus.spigot.api.parkour.IP
 public interface IParkourHandler {
     
     IBlockIO getBlockIO();
+    
+    void loadStages();
+    
+    void saveStages();
 
     Collection<IParkourModule> getModules();
 
