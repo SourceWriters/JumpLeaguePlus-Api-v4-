@@ -48,25 +48,32 @@ public abstract class MessageHandler {
         if (message == null) {
             return "null";
         }
-        String output = message.asString();
+        return apply(message.language(), message.asString(), placeholders);
+    }
+
+    protected final String apply(String language, String output, final Keyed[] placeholders) {
         final Placeholder[] values = Placeholder.parse(output);
         if (values.length == 0) {
             return output;
         }
         for (final Placeholder value : values) {
             if (value.isMessage()) {
-                final IMessage target = getMessage(message.language(), value.getId());
+                final IMessage target = getMessage(language, value.getId());
                 if (target == null) {
                     continue;
                 }
-                output = value.replace(output, message.asMessageString(placeholders));
+                output = value.replace(output, target.asMessageString(placeholders));
                 continue;
             }
             for (final Keyed placeholder : placeholders) {
                 if (!value.getId().equals(placeholder.getKey())) {
                     continue;
                 }
-                output = value.replace(output, placeholder.getValueOrDefault("null").toString());
+                String content = placeholder.getValueOrDefault("null").toString();
+                if (!"null".equals(content)) {
+                    content = apply(language, content, placeholders);
+                }
+                output = value.replace(output, content);
                 break;
             }
         }
