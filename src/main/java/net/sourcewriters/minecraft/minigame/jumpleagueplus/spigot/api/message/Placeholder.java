@@ -37,13 +37,16 @@ public final class Placeholder {
         for (int index = 0; index < length; index++) {
             final char character = message.charAt(index);
             if (character == '$') {
+                if (builder != null) {
+                    build(placeholders, builder.toString());
+                }
                 builder = new StringBuilder().append(character);
                 continue;
             }
             if (builder == null) {
                 continue;
             }
-            if (Character.isAlphabetic(character) || character == '-' || character == '.' || character == '#') {
+            if (Character.isAlphabetic(character) || character == '.' || character == '#') {
                 builder.append(character);
                 continue;
             }
@@ -53,7 +56,7 @@ public final class Placeholder {
         if (builder != null) {
             build(placeholders, builder.toString());
         }
-        return placeholders.values().toArray(Placeholder[]::new);
+        return placeholders.values().toArray(new Placeholder[placeholders.size()]);
     }
 
     private static void build(final HashMap<String, Placeholder> map, final String original) {
