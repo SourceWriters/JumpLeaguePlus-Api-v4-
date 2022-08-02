@@ -25,7 +25,7 @@ public interface IParkourManager {
     
     int getLastZIndex();
     
-    int getGameModuleIdFor(ChunkPosition position);
+    int[] getGameModuleIdsFor(ChunkPosition position);
     
     int getGameModuleAmount();
     

@@ -6,9 +6,10 @@ import java.util.UUID;
 import org.bukkit.World;
 import org.bukkit.block.Biome;
 
-import net.sourcewriters.minecraft.minigame.jumpleagueplus.spigot.api.data.ChunkPosition;
+import net.sourcewriters.minecraft.minigame.jumpleagueplus.spigot.api.data.AreaBox;
 import net.sourcewriters.minecraft.minigame.jumpleagueplus.spigot.api.data.Position;
 import net.sourcewriters.minecraft.minigame.jumpleagueplus.spigot.api.world.IChunk;
+import net.sourcewriters.minecraft.minigame.jumpleagueplus.spigot.api.world.IOffset;
 
 public interface IParkourModule {
 
@@ -34,7 +35,7 @@ public interface IParkourModule {
     
     boolean isFullySupported();
 
-    void paste(IChunk data, int worldHeightMin, int worldHeightMax, ChunkPosition offset);
+    void paste(IChunk data, IOffset offset, int worldHeightMin, int worldHeightMax);
 
     void paste(World world, int x, int y, int z);
 
@@ -45,6 +46,10 @@ public interface IParkourModule {
     Position[] getChestLocations();
 
     Position getStartLocation();
+    
+    Position getEndLocation();
+    
+    AreaBox getBoundingBox();
 
     String getDifficultyId();
 
